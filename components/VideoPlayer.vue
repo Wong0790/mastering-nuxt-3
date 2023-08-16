@@ -1,6 +1,6 @@
 <template>
   <iframe
-    width="560"
+    width="460"
     height="315"
     :src="`https://player.vimeo.com/video/${props.videoId}`"
     title="Video player"
