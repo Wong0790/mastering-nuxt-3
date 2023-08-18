@@ -1,13 +1,13 @@
-import courseData from "./courseData";
+import courseData from './courseData';
 
 type Lesson = {
   title: string;
   slug: string;
   number: number;
   downloadUrl: string;
-  sourceUrl?: string;
   videoId: number;
   text: string;
+  sourceUrl?: string;
   path: string;
 };
 
@@ -24,17 +24,20 @@ type Course = {
 };
 
 export const useCourse = (): Course => {
-  const chapters: Chapter[] = courseData.chapters.map((chapter) => {
-    const lessons: Lesson[] = chapter.lessons.map((lesson) => ({
-      ...lesson,
-      path: `/course/chapter/${chapter.slug}/lesson/${lesson.slug}`,
-    }));
-    return {
-      ...chapter,
-      lessons,
-    };
-  });
-
+  const chapters: Chapter[] = courseData.chapters.map(
+    (chapter) => {
+      const lessons: Lesson[] = chapter.lessons.map(
+        (lesson) => ({
+          ...lesson,
+          path: `/course/chapter/${chapter.slug}/lesson/${lesson.slug}`,
+        })
+      );
+      return {
+        ...chapter,
+        lessons,
+      };
+    }
+  );
   return {
     ...courseData,
     chapters,

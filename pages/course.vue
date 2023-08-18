@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div class="prose mb-12">
-      <h1>
+    <div
+      class="mb-4 flex justify-between items-center w-full"
+    >
+      <h1 class="text-3xl">
         <span class="font-medium">
-          Course:
           <span class="font-bold">{{ title }}</span>
         </span>
       </h1>
+      <UserCard />
     </div>
 
     <div class="flex flex-row justify-center flex-grow">
@@ -26,11 +28,15 @@
             class="flex flex-row space-x-1 no-underline prose-sm font-normal py-1 px-4 -mx-4"
             :to="lesson.path"
             :class="{
-              'text-blue-500': lesson.path === $route.fullPath,
-              'text-gray-600': lesson.path !== $route.fullPath,
+              'text-blue-500':
+                lesson.path === $route.fullPath,
+              'text-gray-600':
+                lesson.path !== $route.fullPath,
             }"
           >
-            <span class="text-gray-500">{{ index + 1 }}.</span>
+            <span class="text-gray-500"
+              >{{ index + 1 }}.</span
+            >
             <span>{{ lesson.title }}</span>
           </NuxtLink>
         </div>
@@ -60,9 +66,12 @@
 </template>
 
 <script setup>
-const { title, chapters } = useCourse();
+const { chapters, title } = useCourse();
 
-const resetError = (error) => {
+const resetError = async (error) => {
+  await navigateTo(
+    '/course/chapter/1-chapter-1/lesson/1-introduction-to-typescript-with-vue-js-3'
+  );
   error.value = null;
 };
 </script>
