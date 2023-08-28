@@ -14,8 +14,13 @@
     "@vueuse/nuxt": "^9.6.0",
     "nuxt": "3.0.0"
   },
+  "overrides": {
+    "vue": "latest"
+  },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
     "@prisma/client": "^5.2.0",
+    "pinia": "^2.1.6",
     "prisma": "^5.2.0"
   },
   "prisma": {
